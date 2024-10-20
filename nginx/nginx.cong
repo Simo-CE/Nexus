@@ -1,0 +1,57 @@
+worker_processes auto;
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    # Load balancing for the API Gateway
+    upstream api_gateway {
+        server api-gateway:8000; # Your API Gateway service
+    }
+
+    # Load balancing for Auth Service (can scale to multiple instances)
+    upstream auth_service {
+        server auth-service:8001;
+    }
+
+    # Load balancing for Reservation Service (can scale to multiple instances)
+    upstream reservation_service {
+        server reservation-service:8002;
+    }
+
+    # Server block for handling incoming requests
+    server {
+        listen 80; # Change to 443 if you're using SSL
+        server_name localhost;
+
+        # Proxy requests to the API Gateway
+        location / {
+            proxy_pass http://api_gateway;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # Example of directly forwarding to auth-service
+        location /auth/ {
+            proxy_pass http://auth_service;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # Example of directly forwarding to reservation-service
+        location /reservation/ {
+            proxy_pass http://reservation_service;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}

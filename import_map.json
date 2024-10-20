@@ -1,0 +1,9 @@
+{
+    "imports": {
+        "oak": "https://deno.land/x/oak/mod.ts",
+        "@controllers/": "../controllers/",
+        "@controller": "../controllers",
+        "@routes/": "../routes/",
+        "@services/": "../services/"
+    }
+}

@@ -1,0 +1,82 @@
+/service-nest
+│
+├── /services
+│   ├── /auth-service
+│   │   ├── auth.controller.ts
+│   │   ├── auth.service.ts
+│   │   └── auth.routes.ts
+│   │
+│   ├── /reservation-service
+│   │   ├── reservation.controller.ts
+│   │   ├── reservation.service.ts
+│   │   └── reservation.routes.ts
+│   │
+│   ├── /user-service
+│   │   ├── user.controller.ts
+│   │   ├── user.service.ts
+│   │   └── user.routes.ts
+│   │
+│   └── /payment-service
+│       ├── payment.controller.ts
+│       ├── payment.service.ts
+│       └── payment.routes.ts
+│
+├── /shared
+│   ├── /database
+│   │   ├── connect.ts
+│   │   └── config.ts
+│   ├── /middlewares
+│   │   └── authMiddleware.ts
+│   ├── /utils
+│   │   └── logger.ts
+│   └── /types
+│       └── interfaces.ts
+│
+├── /config
+│   └── environment.ts
+│
+├── /gateways
+│   └── api_gateway.ts
+│
+└── deno.json
+
+
+
+
+/my-backend-project
+|-- /api-gateway
+|   |-- /src
+|   |-- index.ts
+|-- /auth-service
+|   |-- /src
+|   |   |-- controllers
+|   |   |   |-- auth.controller.ts   # Define auth-related logic
+|   |   |-- routes
+|   |   |   |-- auth.routes.ts       # Auth-related routes
+|   |   |-- index.ts                 # Entry point for the auth service (Oak setup)
+|   |-- dockerfile                   # Dockerfile for auth service
+|-- /reservation-service
+|   |-- /src
+|   |-- index.ts
+|-- /frontend-apps
+|   |-- /app1
+|-- /config
+|-- docker-compose.yml
+|-- README.md
+
+
+
+"oak": "https://deno.land/x/oak/mod.ts",
+import * as mod from "jsr:@oak/oak";
+"oak": "jsr:@oak/oak",
+
+|-- /frontend-apps
+|   |-- /app1
+|   |   |-- build/     # e.g., React/Vue/Angular build output
+|   |   |-- index.html
+|   |-- /app2
+|   |   |-- build/
+|   |   |-- index.html
+
+
+PG: 5432 0000
