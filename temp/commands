@@ -1,0 +1,8 @@
+You can now start the database server using:
+
+    pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+
+postgres://<user>:<password>@<host>:<port>/<database>
+postgres://postgres:0000@localhost:5432/postgres
+
