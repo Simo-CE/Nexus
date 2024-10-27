@@ -3,7 +3,7 @@ import { db } from "../../db/connect.ts";
 import { users as table } from "../models/users.ts";
 import { getPaginationParams } from "../../../utils/helpers/db/params.ts";
 
-const fetch = async (ctx: RouterContext<'/users'>) => {
+const fetch = async (ctx: RouterContext<string>) => {
     try {
         const { page, limit } = getPaginationParams(ctx);
         const offset = (page - 1) * limit;

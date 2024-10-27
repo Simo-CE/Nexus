@@ -4,8 +4,8 @@ import UserController from "../controllers/users.controller.ts";
 const usersRouter = new Router();
 
 usersRouter.get('/users', UserController.fetch);
-usersRouter.post('/users', UserController.create);
-usersRouter.patch('/users', UserController.update);
-usersRouter.delete('/users', UserController.remove);
+usersRouter.post('/user', UserController.create);
+usersRouter.patch('/user/:id', UserController.update);
+usersRouter.delete('/user/:id', UserController.remove);
 
 export { usersRouter };
