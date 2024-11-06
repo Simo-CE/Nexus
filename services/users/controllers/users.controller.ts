@@ -1,5 +1,5 @@
 import type { RouterContext } from "@oak/oak";
-import { db } from "../../db/connect.ts";
+import { db } from "../db.ts";
 import { users as table } from "../models/users.ts";
 import { getPaginationParams } from "../../../utils/helpers/db/params.ts";
 

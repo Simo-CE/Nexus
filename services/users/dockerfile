@@ -1,0 +1,15 @@
+FROM denoland/deno:alpine-2.0.2
+
+EXPOSE 8000
+
+WORKDIR /usr/src/services/users
+
+USER deno
+
+COPY ["deno.json", "deno.lock", "import_map.json", "./"]
+
+RUN deno install
+
+COPY . .
+
+CMD ["run", "--watch", "--allow-net", "--allow-env", "--allow-read", "main.ts"]
