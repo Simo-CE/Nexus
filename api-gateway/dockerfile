@@ -9,6 +9,5 @@ COPY ["deno.json", "deno.lock", "import_map.json", "./"]
 RUN deno install
 
 COPY main.ts .
-# COPY . .
 
 CMD ["run", "--watch", "--allow-net", "--allow-env", "--allow-read", "main.ts"]

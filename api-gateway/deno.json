@@ -5,6 +5,7 @@
   },
   "imports": {
     "@oak/oak": "jsr:@oak/oak@^17.1.0",
+    "@ts-rex/bcrypt": "jsr:@ts-rex/bcrypt@^1.0.3",
     "drizzle-orm": "npm:drizzle-orm@^0.36.1",
     "postgres": "npm:postgres@^3.4.5"
   }

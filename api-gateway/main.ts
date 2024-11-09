@@ -7,7 +7,7 @@ const router = new Router();
 
 router.get('/', (ctx: RouterContext<string>) => {
     ctx.response.status = 200;
-    ctx.response.body = 'Welcome to service nest'
+    ctx.response.body = 'Welcome to services nest'
 })
 
 
