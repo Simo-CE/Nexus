@@ -36,6 +36,8 @@ services:
       - ./config/.env.docker
     expose:
       - "8000"
+    depends_on:
+      - rabbitmq
     restart: always
 
   db:

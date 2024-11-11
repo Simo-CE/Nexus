@@ -6,6 +6,9 @@ export const publishMessage = async (queue: string, message: Record<string, unkn
     const channel = await connection.openChannel();
     await channel.declareQueue({ queue, durable: true });
 
+    const encoder = new TextEncoder();
+    const payload = encoder.encode(JSON.stringify(message));
+
     await channel.publish(
         { routingKey: queue },
         {
@@ -14,8 +17,9 @@ export const publishMessage = async (queue: string, message: Record<string, unkn
             // deliveryMode: 2, // Persistent message
             // correlationId: "unique-id-12345",
         } as BasicProperties,
-        new TextEncoder().encode(JSON.stringify(message))
+        payload
     );
+    // new TextEncoder().encode(JSON.stringify(message))
     console.log(`Message sent to ${queue}`);
 
     await channel.close();

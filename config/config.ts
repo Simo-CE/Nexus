@@ -1,21 +1,16 @@
-// import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
+import { load } from "jsr:@std/dotenv";
 
-/* const env = config({ path: `./config/${Deno.env.get("ENV")}.env` });
-
-export const app = {
-    APP_PORT: env.APP_PORT || 8000,
-    DB_HOST: env.DB_HOST || "localhost",
-    DB_PORT: parseInt(env.DB_PORT || "5432"),
-    DB_USER: env.DB_USER || "postgres",
-    DB_PASS: env.DB_PASS || "password",
-    DB_NAME: env.DB_NAME || "my_db",
-} */
+await load({
+    envPath: "../config/.env.local",
+    export: true,
+});
 
 export const app = {
-    DB_USER: Deno.env.get("DB_USER") || "postgres",
+    DB_USER: Deno.env.get("DB_USER"),
     DB_PASS: Deno.env.get("DB_PASS") || "0000",
     DB_HOST: Deno.env.get("DB_HOST") || "localhost",
     DB_NAME: Deno.env.get("DB_NAME") || "postgres",
     DB_PORT: parseInt(Deno.env.get("DB_PORT") || "5432"),
+    RABBITMQ_HOST: Deno.env.get("RABBITMQ_HOSTNAME") || 'rabbitmq',
     APP_PORT: 8000
 }

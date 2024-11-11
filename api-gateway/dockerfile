@@ -10,4 +10,5 @@ RUN deno install
 
 COPY main.ts .
 
-CMD ["run", "--watch", "--allow-net", "--allow-env", "--allow-read", "main.ts"]
+# CMD ["run", "--watch", "--allow-net", "--allow-env", "--allow-read", "main.ts"]
+CMD ["task", "dev"]
