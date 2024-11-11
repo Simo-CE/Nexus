@@ -1,7 +1,7 @@
 import type { RouterContext } from "jsr:@oak/oak";
 import { db } from "../db.ts";
 import { users as table } from "../models/users.ts";
-import { getPaginationParams } from "../../../utils/helpers/db/params.ts";
+import { getPaginationParams } from "@helpers/db/params.ts";
 
 const fetch = async (ctx: RouterContext<string>) => {
     try {
@@ -9,6 +9,7 @@ const fetch = async (ctx: RouterContext<string>) => {
         const offset = (page - 1) * limit;
         const users = await db.select().from(table).limit(limit).offset(offset);
         const total: any = db.$count(table);
+        console.log(total, typeof total);
         const totalPages = Math.ceil(total[0].count / limit);
 
         const res = {
