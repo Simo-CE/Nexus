@@ -1,9 +1,9 @@
 import type { RouterContext } from 'jsr:@oak/oak';
-import { hashPassword, verifyPassword } from '../../../utils/helpers/hash.ts';
-import { publishMessage } from '../../broker/publisher.ts';
-import { consumeMessages } from '../../broker/consumer.ts';
-import nullabilitiyChecks from '../../../utils/helpers/nullabilityChecks.ts';
 import { create, verify } from "https://deno.land/x/djwt@v3.0.2/mod.ts";
+import { hashPassword, verifyPassword } from '@helpers/hash.ts';
+import { publishMessage } from '@broker/publisher.ts';
+import { consumeMessages } from '@broker/consumer.ts';
+import nullabilitiyChecks from '@helpers/nullabilityChecks.ts';
 
 // Convert the string secret to a CryptoKey
 const importSecretKey = async (secret: string): Promise<CryptoKey> => {
