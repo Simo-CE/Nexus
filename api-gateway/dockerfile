@@ -1,4 +1,4 @@
-FROM denoland/deno:alpine-2.0.2
+FROM denoland/deno:alpine-2.0.6
 
 WORKDIR /usr/src/api-gateway
 
@@ -10,5 +10,7 @@ RUN deno install
 
 COPY main.ts .
 
+# RUN deno cache main.ts
+
 # CMD ["run", "--watch", "--allow-net", "--allow-env", "--allow-read", "main.ts"]
-CMD ["task", "dev"]
+CMD ["task", "start"]

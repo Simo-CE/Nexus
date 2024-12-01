@@ -39,6 +39,11 @@ services:
     depends_on:
       - rabbitmq
     restart: always
+    # develop:
+    #   watch:
+    #     - action: sync+restart
+    #       path: ./api-gateway/
+    #       target: /usr/src/api-gateway/
 
   db:
     image: postgres:latest
